@@ -1,6 +1,6 @@
 FROM centos:7
 
-RUN yum -y install openssh openssh-clients openssh-server
+RUN yum -y install openssh openssh-clients openssh-server curl
 EXPOSE 22
 
 COPY entrypoint.sh /
