@@ -1,0 +1,27 @@
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: sshd-jumpserver
+spec:
+  replicas: 1
+  template:
+    metadata:
+      name: sshd-jumpserver
+      labels:
+        app: sshd-jumpserver
+    spec:
+      hostNetwork: true
+      dnsPolicy: ClusterFirstWithHostNet
+      containers:
+        - name: sshd-jumpserver
+          image: kubernetesio/sshd-jumpserver
+          ports:
+            - containerPort: 22
+              protocol: TCP
+          env:
+            - name: PUBLIC_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: sshkey
+                  key: authorizedkeys
