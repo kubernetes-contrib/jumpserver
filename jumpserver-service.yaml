@@ -2,9 +2,9 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: sshd-jumpserver-svc
+  name: sshd-jumpserver
   labels:
-    name: sshd-jumpserver-svc
+    name: sshd-jumpserver
 spec:
   ports:
     - name: ssh
